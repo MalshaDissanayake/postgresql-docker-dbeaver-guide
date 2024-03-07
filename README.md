@@ -10,7 +10,8 @@ This repository serves as a comprehensive guide for setting up a Docker containe
     - [Step 2: Connect to PostgreSQL Instance Using DBeaver](#step-2-connect-to-postgresql-instance-using-dbeaver)
     - [Step 3: Creating a Table in PostgreSQL](#step-3-creating-a-table-in-postgresql)
     - [Step 4: Inserting Data into the Table](#step-4-inserting-data-into-the-table)
-    - [Step 5: Running a Query](#step-5-running-a-query)
+    - [Step 5:Running a Query to get a preview of table](#step-5-running-a-query-to-get-a-preview-of-table)
+    - [Step 6: Running a Query](#step-6-running-a-query)
 4. [Conclusion](#conclusion)
 
 ## Introduction
@@ -84,6 +85,7 @@ Write and execute the below query to check the table that you created.
 ```
 SELECT * FROM userlogs;
 ```
+
 
 ### Step 6: Running a Query
 1. Write and execute a query to retrieve data from the `userlogs` table.
