@@ -28,22 +28,71 @@ Follow the steps below to set up your PostgreSQL environment and connect to it u
 ### Step 1: Setting Up Docker Container with PostgreSQL
 1. Pull the PostgreSQL Docker image.
    Open your terminal (or command prompt) and execute the following command to pull the official PostgreSQL Docker image:
-   `print(docker pull postgres)'
+   ```
+   docker pull postgres
+   ```
 3. Create a Docker container with PostgreSQL.
+   ```
+   docker run --name my_postgres -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres
+   ```
+ 
+Replace "mysecretpassword" with your desired password.
 
 ### Step 2: Connect to PostgreSQL Instance Using DBeaver
 1. Download and install DBeaver.
-2. Configure a new database connection to PostgreSQL.
+    Link:[Download_DBeaver](https://dbeaver.io/download/)
+2. Configure a new database connection to PostgreSQL.<br>
+   Open DBeaver and click on "Database" in the top menu.<br>
+   Choose "New Database Connection."<br>
+   Select "PostgreSQL" as the database type.<br>
+   Set the connection details:<br>
+
+    Host: localhost<br>
+    Port: 5432<br>
+    Database: postgres<br>
+    Username: postgres<br>
+    Password: (the password you set in the Docker command)<br>
+    Click "Test Connection" to ensure it's successful, then click "Finish" to save the connection.
 
 ### Step 3: Creating a Table in PostgreSQL
-1. Use DBeaver to create a new table named `userlogs`.
+1. Use DBeaver to create a new table named `userlogs`.<br>
+```
+CREATE TABLE userlogs (
+    user_id VARCHAR(255),
+    exam_id VARCHAR(255),
+    page_id VARCHAR(255),
+    q_id VARCHAR(255),
+    a_id VARCHAR(255),
+    is_correct BOOLEAN,
+    ets TIMESTAMP
+);
+```
+
 
 ### Step 4: Inserting Data into the Table
-1. Manually insert data into the `userlogs` table.
+1. Manually insert data into the `userlogs` table.<br>
+```
+INSERT INTO userlogs (user_id, exam_id, page_id, q_id, a_id, is_correct, ets)
+VALUES
+    ('user1', 'exam1', 'page1', 'q1', 'a1', true, NOW()),
+    -- Repeat similar lines for the remaining rows
+    ('user20', 'exam20', 'page20', 'q20', 'a20', false, NOW());
+```
 
-### Step 5: Running a Query
+### Step 5: Running a Query to get a preview of table
+Write and execute the below query to check the table that you created.
+```
+SELECT * FROM userlogs;
+```
+
+### Step 6: Running a Query
 1. Write and execute a query to retrieve data from the `userlogs` table.
-
+   ```
+   SELECT is_correct , 
+	count(user_id) as numberOfUsers
+   FROM userlogs
+   Group BY is_correct
+   ```
 ## Conclusion
 Congratulations! You have successfully set up a Docker container with PostgreSQL, created a table, inserted data, and connected to PostgreSQL using DBeaver. You are now ready to explore more advanced database operations.
 
