@@ -18,7 +18,8 @@ This guide aims to simplify the process of setting up a PostgreSQL environment u
 
 ## Prerequisites
 Before you begin, ensure you have the following:
-- Docker installed on your system
+- Docker installed on your system.
+- If not, you can download it from [Download_Docker](https://docs.docker.com/manuals/)
 - Access to the internet to download Docker images and DBeaver tool
 
 ## Setup Instructions
@@ -26,7 +27,9 @@ Follow the steps below to set up your PostgreSQL environment and connect to it u
 
 ### Step 1: Setting Up Docker Container with PostgreSQL
 1. Pull the PostgreSQL Docker image.
-2. Create a Docker container with PostgreSQL.
+   Open your terminal (or command prompt) and execute the following command to pull the official PostgreSQL Docker image:
+   `print(docker pull postgres)'
+3. Create a Docker container with PostgreSQL.
 
 ### Step 2: Connect to PostgreSQL Instance Using DBeaver
 1. Download and install DBeaver.
